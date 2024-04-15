@@ -3,7 +3,7 @@ require("dotenv").config();
 const multer = require("multer");
 const pdfParse = require("pdf-parse");
 const translate = require("node-google-translate-skidz");
-const { PDFDocument, rgb, StandardFonts, PDFFont } = require("pdf-lib");
+const { PDFDocument, rgb} = require("pdf-lib");
 const fs = require("fs");
 
 const app = express();
@@ -49,16 +49,16 @@ app.post("/translate", upload.single("pdf"), async (req, res) => {
       const textY = height - 50 - textHeight;
 
       // Draw a white background rectangle behind the text
-      const backgroundWidth = width - 100; // Adjusted for padding
-      const backgroundHeight = textHeight + 10; // Adjusted for padding
-      const backgroundX = 50; // Adjusted for padding
-      const backgroundY = textY - textHeight; // Adjusted for padding
+      const backgroundWidth = width - 100;
+      const backgroundHeight = textHeight + 10;
+      const backgroundX = 50;
+      const backgroundY = textY - textHeight;
       page.drawRectangle({
         x: backgroundX,
         y: backgroundY,
         width: backgroundWidth,
         height: backgroundHeight,
-        color: rgb(1, 1, 1), // White color
+        color: rgb(1, 1, 1),
       });
 
       // Draw the text
